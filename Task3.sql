@@ -251,3 +251,90 @@ on employees.id = roles_employee.employee_id
 join roles
 on roles_employee.role_id = roles.id
 where role_name like '%QA %'
+
+-- Display the number of Middle specialists
+select count(employees.employee_name)
+from employees join employee_salary
+on employees.id = employee_salary.employee_id
+join salary
+on employee_salary.salary_id = salary.id
+join roles_employee
+on employees.id = roles_employee.employee_id
+join roles
+on roles_employee.role_id = roles.id
+where role_name like '%Middle %'
+
+-- Display the number of developers
+select count(employees.employee_name)
+from employees join employee_salary
+on employees.id = employee_salary.employee_id
+join salary
+on employee_salary.salary_id = salary.id
+join roles_employee
+on employees.id = roles_employee.employee_id
+join roles
+on roles_employee.role_id = roles.id
+where role_name like '% developer%'
+
+-- Get developer salary
+select salary.monthly_salary
+from employees join employee_salary
+on employees.id = employee_salary.employee_id
+join salary
+on employee_salary.salary_id = salary.id
+join roles_employee
+on employees.id = roles_employee.employee_id
+join roles
+on roles_employee.role_id = roles.id
+where role_name like '% developer%'
+
+-- Display names, positions and salaries of all specialists in ascending order
+select employees.employee_name, roles.role_name, salary.monthly_salary
+from employees join employee_salary
+on employees.id = employee_salary.employee_id
+join salary
+on employee_salary.salary_id = salary.id
+join roles_employee
+on employees.id = roles_employee.employee_id
+join roles
+on roles_employee.role_id = roles.id
+order by monthly_salary
+
+-- Display the names, positions and salary of all specialists in ascending order whose salary is from 1700 to 2300
+select employees.employee_name, roles.role_name, salary.monthly_salary
+from employees join employee_salary
+on employees.id = employee_salary.employee_id
+join salary
+on employee_salary.salary_id = salary.id
+join roles_employee
+on employees.id = roles_employee.employee_id
+join roles
+on roles_employee.role_id = roles.id
+where monthly_salary >= 1700 and monthly_salary <= 2300
+order by monthly_salary
+
+-- Display the names, positions and salary of all specialists in ascending order whose salary is less than 2300
+select employees.employee_name, roles.role_name, salary.monthly_salary
+from employees join employee_salary
+on employees.id = employee_salary.employee_id
+join salary
+on employee_salary.salary_id = salary.id
+join roles_employee
+on employees.id = roles_employee.employee_id
+join roles
+on roles_employee.role_id = roles.id
+where monthly_salary < 2300
+order by monthly_salary
+
+-- Display the names, positions and salary of all specialists in ascending order whose salary is equal to 1100, 1500, 2000
+select employees.employee_name, roles.role_name, salary.monthly_salary
+from employees join employee_salary
+on employees.id = employee_salary.employee_id
+join salary
+on employee_salary.salary_id = salary.id
+join roles_employee
+on employees.id = roles_employee.employee_id
+join roles
+on roles_employee.role_id = roles.id
+where monthly_salary = 1100 OR monthly_salary = 1500 OR monthly_salary = 2000
+order by monthly_salary
