@@ -203,3 +203,51 @@ on employees.id = roles_employee.employee_id
 join roles
 on roles_employee.role_id = roles.id
 where role_name like '%Junior %'
+
+-- Display the amount of salaries of JS developers
+select sum(salary.monthly_salary)
+from employees join employee_salary
+on employees.id = employee_salary.employee_id
+join salary
+on employee_salary.salary_id = salary.id
+join roles_employee
+on employees.id = roles_employee.employee_id
+join roles
+on roles_employee.role_id = roles.id
+where role_name like '%JavaScript %'
+
+-- Display the minimum salary of QA engineers
+select min(salary.monthly_salary)
+from employees join employee_salary
+on employees.id = employee_salary.employee_id
+join salary
+on employee_salary.salary_id = salary.id
+join roles_employee
+on employees.id = roles_employee.employee_id
+join roles
+on roles_employee.role_id = roles.id
+where role_name like '%QA %'
+
+-- Display the maximum salary of QA engineers
+select max(salary.monthly_salary)
+from employees join employee_salary
+on employees.id = employee_salary.employee_id
+join salary
+on employee_salary.salary_id = salary.id
+join roles_employee
+on employees.id = roles_employee.employee_id
+join roles
+on roles_employee.role_id = roles.id
+where role_name like '%QA %'
+
+-- Display the number of QA engineers
+select count(employees.employee_name)
+from employees join employee_salary
+on employees.id = employee_salary.employee_id
+join salary
+on employee_salary.salary_id = salary.id
+join roles_employee
+on employees.id = roles_employee.employee_id
+join roles
+on roles_employee.role_id = roles.id
+where role_name like '%QA %'
